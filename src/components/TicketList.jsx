@@ -1,39 +1,24 @@
 import React from 'react';
 import Ticket from './Ticket';
+import PropTypes from 'prop-types';
 
-var masterTicketList = [
-  {
-    names: 'Thato and Haley',
-    location: '3a',
-    issue: 'Firebase'
-  },
-  {
-    names: 'Haley Joel',
-    location: '6d',
-    issue: 'Dead People Vision'
-  },
-  {
-    names: 'Haley Joel',
-    location: '1a',
-    issue: 'Bruce Willis wont leave me alone'
-  }
-];
-
-
-function TicketList(){
+function TicketList(props){
+  console.log(props.ticketList);
   return (
     <div>
       <hr/>
-      {masterTicketList.map((ticket, index)=>
-        <Ticket 
-          names={ticket.names}
+      {props.ticketList.map((ticket) =>
+        <Ticket names={ticket.names}
           location={ticket.location}
           issue={ticket.issue}
-          key={index}
-        />
+          key={ticket.id}/>
       )}
     </div>
   );
 }
+
+TicketList.propTypes = {
+  ticketList: PropTypes.array
+};
 
 export default TicketList;
